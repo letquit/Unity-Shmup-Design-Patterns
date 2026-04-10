@@ -46,6 +46,12 @@ namespace Shmup
                 DestroyParticleSystem(hitVFX);
             }
             
+            var plane = collision.gameObject.GetComponent<Plane>();
+            if (plane != null)
+            {
+                plane.TakeDamage(10);
+            }
+            
             Destroy(gameObject);
         }
 

@@ -248,6 +248,7 @@ GameObject:
   - component: {fileID: -4319638492075839052}
   - component: {fileID: 8361803818327723493}
   - component: {fileID: 4044192130878031369}
+  - component: {fileID: 8486145971518330887}
   m_Layer: 7
   m_Name: Enemy
   m_TagString: Untagged
@@ -333,6 +334,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95b6ce2fbc6f4244994a618e27a7006c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Shmup.EnemyWeapon
-  weaponStrategy: {fileID: 11400000, guid: 610b8f288a053944bb79c656b83766a0, type: 2}
+  weaponStrategy: {fileID: 11400000, guid: e913c5fb8c9af994d8817b784ff87e48, type: 2}
   firePoint: {fileID: 4196794901762981100}
   layer: 7
+--- !u!114 &8486145971518330887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5221872577616444985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 476841b6defa4aec8a49640b0059c473, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Shmup.Enemy
+  maxHealth: 10
