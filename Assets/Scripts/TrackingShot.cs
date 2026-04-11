@@ -20,19 +20,23 @@ namespace Shmup
             var projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
             projectile.transform.SetParent(firePoint);
             projectile.layer = layer;
-            
+    
             var projectileComponent = projectile.GetComponent<Projectile>();
             projectileComponent.SetSpeed(projectileSpeed);
-            projectile.GetComponent<Projectile>().Callback = () =>
+    
+            float fixedZ = firePoint.position.z; 
+    
+            GameObject projGO = projectile;
+            projectileComponent.Callback = () =>
             {
-                Vector3 direction = (target.position - projectile.transform.position).With(z: firePoint.position.z)
-                    .normalized;
-                
+                if (target == null || projGO == null) return;
+        
+                Vector3 direction = (target.position - projGO.transform.position).With(z: fixedZ).normalized;
                 Quaternion rotation = Quaternion.LookRotation(direction, Vector3.forward);
-                projectile.transform.rotation = Quaternion.Slerp(projectile.transform.rotation, rotation,
+                projGO.transform.rotation = Quaternion.Slerp(projGO.transform.rotation, rotation,
                     trackingSpeed * Time.deltaTime);
             };
-            
+    
             Destroy(projectile, projectileLifetime);
         }
     }

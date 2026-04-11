@@ -14,16 +14,18 @@ namespace Shmup
         public Player Player => player;
         
         private Player player;
+        private Boss boss;
         private int score;
         private float restartTimer = 3f;
         
-        public bool IsGameOver() => player.GetHealthNormalized() <= 0 || player.GetFuelNormalized() <= 0;
+        public bool IsGameOver() => player.GetHealthNormalized() <= 0 || player.GetFuelNormalized() <= 0 || boss.GetHealthNormalized() <= 0;
 
         private void Awake()
         {
             Instance = this;
 
             player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+            boss = GameObject.FindGameObjectWithTag("Boss").GetComponent<Boss>();
         }
 
         private void Update()
