@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace Shmup
 {
+    /// <summary>
+    /// 视差控制器组件，用于实现背景层的视差滚动效果
+    /// </summary>
     public class ParallaxController : MonoBehaviour
     {
         [SerializeField] private Transform[] backgrounds;   // 背景层级的数组
@@ -16,9 +19,12 @@ namespace Shmup
         
         private void Start() => previousCamPos = cam.position;
 
+        /// <summary>
+        /// 更新每一帧的视差效果
+        /// </summary>
         private void Update()
         {
-            // 遍历每一个背景层级
+            // 计算并应用每一层背景的视差偏移
             for (var i = 0; i < backgrounds.Length; i++)
             {
                 var parallax = (previousCamPos.y - cam.position.y) * (i * multiplier);
